@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap" rel="stylesheet">
+    <title>Antonio BlackJack</title>
+</head>
+<body>
+    <header>
+        <h1>Blackjack</h1>
+    </header>
+    <main>
+        <div id="intro">
+            <div class="config">
+
+            </div>
+        </div>
+        <div id="generalContainer">
+            <section class="player">
+                <div class="Text">
+                    <h2><span id="PointsP">0</span> Points</h2>
+                    <h2>
+                        Player
+                    </h2>
+                </div>
+                <div class="Cards">
+                </div>
+            </section>
+            <section class="opponent" id="o1">
+                <div class="Text">
+                    <h2 id="Points1">N Points</h2>
+                    <h2>
+                        Opponent #1
+                    </h2>
+                </div>
+                <div class="Cards">
+                    <img class="oCards" src="assets/cards/6C.png">
+                   </div>
+            </section>
+            <section class="opponent" id="o2">
+                <div class="Text">
+                    <h2 id="Points2">N Points</h2>
+                    <h2>
+                        Opponent #2
+                    </h2>
+                </div>
+                <div class="Cards">
+                    <img class="oCards" src="assets/cards/KS.png">
+                    
+                   </div>
+            </section>
+            <section class="opponent" id="o3">
+                
+                <div class="Text">
+                    <h2 id="Points3">N Points</h2>
+                    <h2>
+                        Opponent #3
+                    </h2>
+                </div>
+                <div class="Cards">
+                    <img class="oCards" src="assets/cards/6H.png">
+                   </div>
+            </section>
+            <section class="opponent" id="o4">
+                <div class="Text">
+                    <h2 id="Points4">N Points</h2>
+                    <h2>
+                        Opponent #4
+                    </h2>
+                </div>
+                <div class="Cards">
+                    <img class="oCards" src="assets/cards/2D.png">
+                   </div>
+            </section>
+            <section class="buttonContainer">
+                <button id="newGame">
+                    New Game
+                </button>
+                <button id="hit" onclick="hit()">
+                    Hit
+                </button>
+                <button id="stand">
+                    Stand
+                </button>
+
+            </section>
+        </div>
+    </main>
+    <script src="assets/js/underscore-shuffle.js"></script>
+    <script src="assets/js/game.js"></script>
+</body>
+</html>

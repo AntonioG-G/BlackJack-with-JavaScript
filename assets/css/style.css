@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  position: static;
+  height: 9vh;
+  text-align: center;
+  background-color: #060606;
+  color: white;
+  padding: 15px 0;
+}
+
+h1 {
+  font-size: 5vh;
+  font-family: "Castoro Titling", cursive;
+  text-shadow: 0.75px 0px white;
+}
+
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
+}
+
+button {
+  position: relative;
+  z-index: 2;
+  width: 33.3%;
+  margin: 3%;
+  padding: 10px;
+  background-color: #EA1C1A;
+  opacity: 0.5;
+  color: white;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 0.75px 0px white;
+  border: none;
+  box-shadow: 3px 3px 1.5px #fade3e;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 1s;
+}
+
+#stand::before, #newGame::before, #hit::before {
+  content: "";
+  position: absolute;
+  background-color: #91100D;
+  width: 0%;
+  height: 0%;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+#stand:hover::before {
+  width: 100%;
+  height: 100%;
+  left: 50%;
+}
+
+#newGame:hover::before {
+  width: 100%;
+  height: 100%;
+  left: 50%;
+}
+
+#hit:hover::before {
+  width: 100%;
+  height: 100%;
+  left: 50%;
+}
+
+.buttonContainer {
+  display: flex;
+  position: absolute;
+  width: 30%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#intro {
+  position: absolute;
+  background-color: #060606;
+  width: 100%;
+  height: 91vh;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+#generalContainer {
+  background-color: #026139;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(2, 30%) 40%;
+  justify-items: start;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 91vh;
+  filter: blur(4px);
+  overflow: hidden;
+  z-index: 2;
+}
+
+.player {
+  grid-area: 3/1/4/3;
+  text-align: center;
+  position: absolute;
+  justify-self: center;
+  min-width: 300px;
+  max-height: 35%;
+  bottom: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.opponent {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-end; */
+  text-align: center;
+}
+
+#o1 {
+  grid-area: 1/1/2/2;
+  transform: rotate(90deg);
+  max-width: 27%;
+  align-items: center;
+}
+
+#o2 {
+  grid-area: 2/1/3/2;
+  transform: rotate(90deg);
+  max-width: 27%;
+}
+
+#o3 {
+  grid-area: 2/2/3/3;
+  transform: rotate(270deg);
+  max-width: 27%;
+  justify-self: end;
+}
+
+#o4 {
+  grid-area: 1/2/2/3;
+  transform: rotate(270deg);
+  max-width: 27%;
+  justify-self: end;
+}
+
+.opponent h2 {
+  font-size: 25px;
+}
+
+.Cards {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  margin-top: 30px;
+}
+
+.player .Cards {
+  margin-left: 18%;
+}
+
+.pCards {
+  margin-left: -11%;
+  max-width: 130px;
+}
+
+.oCards {
+  max-width: 25%;
+}
+
+.oCards:not(:first-child) {
+  margin-left: -8.5%;
+}/*# sourceMappingURL=style.css.map */
