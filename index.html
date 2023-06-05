@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/ui.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap" rel="stylesheet">
@@ -17,14 +18,29 @@
     <main>
         <div id="intro">
             <div class="config">
-
+                <span>Welcome! Enjoy playing my BlackJack Project</span><br>
+                <form id="userForm">
+                <div>
+                    <input type="text" name="username" id="username" maxlength="10" required>
+                    <select name="players" id="players" required>
+                        <option value="">Select</option>
+                        <option value="1">2 Players</option>
+                        <option value="2">3 Players</option>
+                        <option value="3">4 Players</option>
+                        <option value="4">5 Players</option>
+                    </select>
+                </div>
+                <label for="username">Username</label>
+                <label for="players">Players</label><br>
+                <button type="submit" id="play">Play!</button>
+                </form>
             </div>
         </div>
         <div id="generalContainer">
             <section class="player">
                 <div class="Text">
                     <h2><span id="PointsP">0</span> Points</h2>
-                    <h2>
+                    <h2 id="playerName">
                         Player
                     </h2>
                 </div>
@@ -91,6 +107,7 @@
             </section>
         </div>
     </main>
+    <script src="assets/js/info.js"></script>
     <script src="assets/js/underscore-shuffle.js"></script>
     <script src="assets/js/game.js"></script>
 </body>
