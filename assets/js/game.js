@@ -9,10 +9,10 @@ let deck = [];
 const types =['C', 'D', 'H', 'S']
 const specials =['A', 'J', 'Q', 'K']
 
-const opponentDOM = document.getElementsByClassName('Cards');
-const player = document.getElementById('playerCards')
+const competitors = document.getElementsByClassName("competitor");
 const pointsP = document.getElementById('PointsP');
 const points = document.getElementsByClassName('points');
+let p=0;
 
 const createDeck = () =>{
     for (let i = 2; i <= 10; i++) {
@@ -29,6 +29,7 @@ const createDeck = () =>{
     return deck;
 }
 const hit = () =>{   
+    const player = document.getElementById('playerCards');
     let card = document.createElement('img');
     card.classList.add('pCards');
     let num = Math.floor(Math.random() * deck.length);
@@ -39,48 +40,34 @@ const hit = () =>{
     pointsAdd(value);
     deck.splice(num, 1);
 }
-const hitopponent = (posicion) =>{   
-    let opponent;
+const hitopponent = (oc) =>{   
     let card = document.createElement('img');
     card.classList.add('oCards');
     let num = Math.floor(Math.random() * deck.length);
     card.src = `/assets/cards/${deck[num]}`;
-    opponent = opponentDOM[posicion];
-    opponent.appendChild(card);
+    oc.appendChild(card);
 
-    let value = cardValueO(deck[num], posicion);
-    pointsAddO(value, posicion);
+    let value = cardValueO(deck[num], p);
+    pointsAddO(value, p);
     deck.splice(num, 1);
 }
 const firstRound = () =>{
-    for (let i = 0; i <= amountPlayers; i++) {
-        if (amountPlayers<=2) {
-            if (i!=amountPlayers) {
-                for (let j = 0; j < 2; j++) {
-                    hitopponent(i);
-                }
-            }else{
-                for (let j = 0; j < 2; j++) {
-                    hit();
-                }
-            }
-        }else if (amountPlayers>2) {
-            if (i<2) {
-                for (let j = 0; j < 2; j++) {
-                    hitopponent(i);
-                }
-            }else if (i==2) {
-                for (let j = 0; j < 2; j++) {
-                    hit();
-                }
-            }else if (i>2) {
-                for (let j = 0; j < 2; j++) {
-                    hitopponent(i-1);
-                }
-            }
+    for(let i = 0; i < competitors.length; i++) {
+      if (!competitors[i].classList.contains("player")) {
+          for (let j = 0; j < 2; j++) {
+            const cardsElement = competitors[i].querySelector(".Cards");
+            hitopponent(cardsElement);
+          }
+          p++;
+        } else {
+          for (let j = 0; j < 2; j++) {
+            hit();
+          }
         }
-    }
+      };
+      mainGame();
 }
+
 const cardValue = (card) =>{
     const value = card.substring(0, card.length-5);
     return (isNaN(value)) ?
@@ -89,11 +76,11 @@ const cardValue = (card) =>{
     :10
     : value*1;
 }
-const cardValueO = (card,posicion) =>{
+const cardValueO = (card, p) =>{
     const value = card.substring(0, card.length-5);
     return (isNaN(value)) ?
     (value === 'A') ?
-    ((points[posicion].textContent*1)>10) ? 1:11
+    ((points[p].textContent*1)>10) ? 1:11
     :10
     : value*1;
 }
@@ -101,8 +88,25 @@ const pointsAdd = (value) => {
     let i =pointsP.textContent*1;
     pointsP.textContent = value+i;
 }
-const pointsAddO = (value, posicion) => {
-    let i = points[posicion].textContent*1;
-    points[posicion].textContent = value+i;
+const pointsAddO = (value, p) => {
+    let i = points[p].textContent*1;
+    points[p].textContent = value+i;
 }
-createDeck();
+
+const mainGame = () => {
+    p=0;
+    for (let i = 0; i < competitors.length; i++) {
+      if (competitors[i].id !== _player.id) {
+        const pointsElement = competitors[i].querySelector(".points").textContent;
+        const cardsElement = competitors[i].querySelector(".Cards");
+          if ((pointsElement*1)<30) {
+                  hitopponent(cardsElement);
+                  mainGame();
+                }
+              p++;
+            } else {
+              console.log("funcion del jugador jaja")
+            }
+      }
+}
+      createDeck();
